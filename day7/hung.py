@@ -6,16 +6,31 @@ word_list = ["aardvark", "baboon", "camel", "dog", "elephant", "frog", "goat", "
 
 word = random.choice(word_list)
 
-print(word)
-print("_"*len(word))
+
+print (f"Your word is {word}")
+display = []
+for i in range(len(word)):
+    display.append("_")
+
+print(display)
 
 
-guess = input("Enter Guess")
-for letter in word:
-    if letter == guess:
-        print(letter)
-    else:
-        print("_")
 
-print("game over")
+chances = len(word) 
 
+
+for i in range(len(word)):
+    if chances <= 0:
+        print("you lost")
+        break
+    guess = input("Enter Guess : ")
+
+    for i in range(len(display)):
+        if(guess == word[i]):
+            display[i] = guess
+        else:
+            chances = chances - 1
+    
+    print(display)
+
+print("you won")
